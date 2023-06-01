@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
@@ -26,44 +27,30 @@ class AuthController extends Controller{
       'password' => Hash::make($request->password),
     ]);
 
-    $token = auth('api')->login($user);
+    $token = auth('api')->claims(['email' => $request->email])->login($user);
     return response()->json([
-      'status' => 'success',
-      'message' => 'User created successfully',
-      'user' => $user,
-      'authorisation' => [
-        'token' => $token,
-        'type' => 'bearer',
-      ]
+      'accessToken' => $token
     ]);
   }
 
-  public function login(){
+  public function login(Request $request){
     $credentials = request(['email', 'password']);
-    if(!$token = auth('api')->attempt($credentials)){
+    if(!$token = auth('api')->claims(['email' => $request->email])->attempt($credentials)){
       return response()->json(['error' => 'Unauthorized'], 401);
     }
-    return $this->respondWithToken($token);
-  }
-
-  public function me(){
-    return response()->json(auth('api')->user());
+    return response()->json([
+      'accessToken' => $token
+    ]);
   }
 
   public function logout(){
     auth('api')->logout();
-    return response()->json(['message' => 'Successfully logged out']);
+    return response(Response::HTTP_OK);
   }
 
   public function refresh(){
-    return $this->respondWithToken(auth('api')->refresh());
-  }
-
-  protected function respondWithToken($token){
     return response()->json([
-      'access_token' => $token,
-      'token_type' => 'Bearer',
-      'expires_in' => config('jwt.ttl')
+      'accessToken' => auth('api')->refresh()
     ]);
   }
 }

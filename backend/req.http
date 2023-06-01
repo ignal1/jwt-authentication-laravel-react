@@ -4,7 +4,7 @@ Accept: application/json
 
 {
   "name": "user",
-  "email": "user1@mail.com",
+  "email": "user2@mail.com",
   "password": "aB1"
 }
 
@@ -38,8 +38,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vM
 GET http://127.0.0.1:8000/api/posts
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODU1Njc0NjcsImV4cCI6MTY4NTU2NzUyNywibmJmIjoxNjg1NTY3NDY3LCJqdGkiOiJ1YjVtTnBobXAzbnlOSGRGIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.qybL53pRoz3W3QTSjqRt1DfZezKJJo9x2jXUtCxGygA
-
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODU2NTYxNDQsImV4cCI6MTY4NTY1NjIwNCwibmJmIjoxNjg1NjU2MTQ0LCJqdGkiOiJnM0xxSVVqMXhVczRhZlJXIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJuYW1lIjoidXNlciIsImlkIjoxLCJlbWFpbCI6InVzZXJAbWFpbC5jb20ifQ.G2HkNIVPOvRTrdKPG8AHx7gHcHYixaa8ObwqwO86mqk
 
 ###
 
