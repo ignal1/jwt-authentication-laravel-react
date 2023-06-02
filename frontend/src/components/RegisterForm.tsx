@@ -1,12 +1,18 @@
 import React, {FC, useState} from 'react';
 import store from '../store'
 
-const LoginForm:FC = () => {
+const RegisterForm:FC = () => {
+  const [name, setName] = useState<string>()
   const [email, setEmail] = useState<string>()
   const [password, setPassword] = useState<string>()
 
   return (
     <div>
+      <input
+        onChange={e => setName(e.target.value)}
+        value={name}
+        type="text"
+        placeholder="Name" />
       <input
         onChange={e => setEmail(e.target.value)}
         value={email}
@@ -17,9 +23,9 @@ const LoginForm:FC = () => {
         value={password}
         type="text"
         placeholder="Password" />
-      <button onClick={() => store.login(email!, password!)}>Sign in</button>
+      <button onClick={() => store.register(name!, email!, password!)}>Register</button>
     </div>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
