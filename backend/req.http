@@ -5,7 +5,7 @@ Accept: application/json
 {
   "name": "user",
   "email": "user2@mail.com",
-  "password": "aB1"
+  "password": "0"
 }
 
 ###
@@ -48,5 +48,61 @@ Accept: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODU1NjcxMzEsImV4cCI6MTY4NTU2NzE5MSwibmJmIjoxNjg1NTY3MTMxLCJqdGkiOiJ1czhXYXQ2aHU1TDJJNlIzIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.QVMRFpMkkxnqNVCqaJXFWAUDFZFTR8Tems9UA-KMwms
 
 
+
+
+
+
+
+
+### Docker
+
+POST http://127.0.0.1:8080/api/auth/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "user",
+  "email": "user2@mail.com",
+  "password": "0"
+}
+
+###
+
+POST http://127.0.0.1:8080/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "user@mail.com",
+  "password": "aB1"
+}
+
+###
+
+POST http://127.0.0.1:8080/api/auth/refresh
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODU1NjcxMzEsImV4cCI6MTY4NTU2NzE5MSwibmJmIjoxNjg1NTY3MTMxLCJqdGkiOiJ1czhXYXQ2aHU1TDJJNlIzIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.QVMRFpMkkxnqNVCqaJXFWAUDFZFTR8Tems9UA-KMwms
+
+###
+
+POST http://127.0.0.1:8080/api/auth/logout
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODU1Njc0NjcsImV4cCI6MTY4NTU2NzUyNywibmJmIjoxNjg1NTY3NDY3LCJqdGkiOiJ1YjVtTnBobXAzbnlOSGRGIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.qybL53pRoz3W3QTSjqRt1DfZezKJJo9x2jXUtCxGygA
+
+###
+
+GET http://127.0.0.1:8080/api/posts
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODU2NTYxNDQsImV4cCI6MTY4NTY1NjIwNCwibmJmIjoxNjg1NjU2MTQ0LCJqdGkiOiJnM0xxSVVqMXhVczRhZlJXIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJuYW1lIjoidXNlciIsImlkIjoxLCJlbWFpbCI6InVzZXJAbWFpbC5jb20ifQ.G2HkNIVPOvRTrdKPG8AHx7gHcHYixaa8ObwqwO86mqk
+
+###
+
+POST http://127.0.0.1:8080/api/auth/me
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODU1NjcxMzEsImV4cCI6MTY4NTU2NzE5MSwibmJmIjoxNjg1NTY3MTMxLCJqdGkiOiJ1czhXYXQ2aHU1TDJJNlIzIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.QVMRFpMkkxnqNVCqaJXFWAUDFZFTR8Tems9UA-KMwms
 
 
