@@ -1,53 +1,59 @@
-import {IUser} from "../models/IUser";
 import {makeAutoObservable} from "mobx";
 import {AuthService} from "../services/AuthService";
 
 class Store{
-  user = {} as IUser
+  user = {}
   isAuth = false
+  isLoading = false
 
   constructor(){
     makeAutoObservable(this)
   }
 
-  setAuth(bool:boolean){
+  setAuth(bool){
     this.isAuth = bool
   }
 
-  setUser(user:IUser){
+  setUser(user){
     this.user = user
   }
 
-  async login(email:string, password:string){
+  setLoading(bool){
+    this.isLoading = bool
+  }
+
+  async login(email, password){
     try{
       const response = await AuthService.login(email, password)
-      console.log(response)
-      localStorage.setItem('token', response.data.accessToken)
+      sessionStorage.setItem('token', response.data.accessToken)
       this.setAuth(true)
       this.setUser(Store.makeUser(response.data.accessToken))
-    } catch(e:any) {
+    } catch(e) {
       console.log(e.response?.data?.error)
     }
   }
 
   async refresh(){
+    this.setLoading(true)
     try{
       const response = await AuthService.refresh()
-      localStorage.setItem('token', response.data.accessToken)
+      sessionStorage.setItem('token', response.data.accessToken)
       this.setAuth(true)
       this.setUser(Store.makeUser(response.data.accessToken))
-    } catch(e:any) {
+    } catch(e) {
       console.log(e.response?.data?.error)
+    } finally {
+      this.setLoading(false)
     }
   }
 
-  async register(name:string, email:string, password:string){
+  async register(name, email, password){
     try{
       const response = await AuthService.register(name, email, password)
-      localStorage.setItem('token', response.data.accessToken)
+      sessionStorage.setItem('token', response.data.accessToken)
       this.setAuth(true)
       this.setUser(Store.makeUser(response.data.accessToken))
-    } catch(e:any) {
+    } catch(e) {
       console.log(e.response?.data?.error)
     }
   }
@@ -55,16 +61,16 @@ class Store{
   async logout(){
     try{
       const response = await AuthService.logout()
-      localStorage.removeItem('token')
+      sessionStorage.removeItem('token')
       this.setAuth(false)
-      this.setUser({} as IUser)
-    } catch(e:any) {
+      this.setUser({})
+    } catch(e) {
       console.log(e.response?.data?.error)
     }
   }
 
-  private static makeUser(token:string):IUser{
-    const tokenBinary = JSON.parse(atob(token.split('.')[1])) as IUser
+  static makeUser(token){
+    const tokenBinary = JSON.parse(atob(token.split('.')[1]))
     return {
       id: tokenBinary.id,
       name: tokenBinary.name,

@@ -1,10 +1,10 @@
-import React, {FC, useState} from 'react';
+import React, {useState} from 'react';
 import store from '../store'
 
-const RegisterForm:FC = () => {
-  const [name, setName] = useState<string>()
-  const [email, setEmail] = useState<string>()
-  const [password, setPassword] = useState<string>()
+const RegisterForm = () => {
+  const [name, setName] = useState()
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
 
   return (
     <div>
@@ -23,7 +23,7 @@ const RegisterForm:FC = () => {
         value={password}
         type="text"
         placeholder="Password" />
-      <button onClick={() => store.register(name!, email!, password!)}>Register</button>
+      <button onClick={() => store.register(name, email, password)}>Register</button>
     </div>
   );
 };
