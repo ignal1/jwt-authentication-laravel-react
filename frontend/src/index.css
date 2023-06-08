@@ -29,25 +29,25 @@ h6{
 }
 html,
 body,
-.app,
 #root{
   height: 100%;
   line-height: 1;
   font-size: 16px;
   font-weight: 500;
   color: #000;
-  background: #fff;
+  background: #eeeeee;
   font-family: Montserrat, sans-serif;
 }
 /* End normalizing */
 .wrapper{
   display: flex;
-  flex-direction: column;     /* Внутри блоки выстраиваются в столбец */
+  flex-direction: column;
   min-height: 100%;
-  overflow: hidden;           /* Это чтобы не было нижнего скрола */
+  overflow: hidden;
 }
 .page {
-  flex: 1 1 auto;             /* Внутри .wrapper этот блок будет вытягиваться и прибивать footer к подвалу. Вытягивание будет за счет добавления пустого места внизу данного блока */
+  flex: auto;
+  padding-top: 50px;
 }
 .container {
   max-width: 900px;
@@ -61,8 +61,65 @@ body,
   position: fixed;
   background-color: gray;
 }
-.header_container {            /* Добавлено чтобы выровнять бургер по вертикали внутри navbar. */
-  display: flex;               /* Нельзя было делать .header display:flex, так как бургер выравнивался по центру. */
+.header_container {
+  display: flex;
   align-items: center;
-  min-height: 50px;            /* min-height такой же, как у .header. Без этого высота .header_container по содержимому и центрирования не будет. */
+  justify-content: space-between;
+  min-height: 50px;
+}
+.header_left > *:not(:last-child) {
+  padding-right: 20px;
+}
+.header_right > *:not(:last-child) {
+  padding-right: 20px;
+}
+.form_container {
+  max-width: 300px;
+  padding: 20px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.form_container > *:not(:last-child) {
+  margin: 0 0 20px 0;
+}
+.main_container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 50px - 36px)
+}
+input {
+  padding: 15px;
+  width: 100%;
+  height: 45px;
+  font-size: 20px;
+}
+input:focus {
+  color: inherit;
+  background-color: #fff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+button {
+  height: 45px;
+  padding: 0 15px;
+  font-size: 20px;
+  background: #435cfc;
+  color: #eeeeee;
+  border: 0;
+  font-family: 'Raleway', sans-serif;
+  align-self: flex-end;
+}
+button:hover {
+  background: #5d73f8;
+  cursor: pointer;
+}
+button:active {
+  border-color: rgba(0, 123, 255, 0.25);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.footer {
+  text-align: center;
+  padding: 10px 0;
 }

@@ -7,7 +7,7 @@ const RegisterPage = () => {
   const [password, setPassword] = useState()
 
   return (
-    <div>
+    <div className="form_container">
       <input
         onChange={e => setName(e.target.value)}
         value={name}

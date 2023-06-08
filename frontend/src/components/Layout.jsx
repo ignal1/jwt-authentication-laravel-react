@@ -7,19 +7,28 @@ const Layout = () => {
     <div className="wrapper">
       <header className="header">
         <div className="header_container container">
-          <CustomLink to="/">Posts</CustomLink>
-          <CustomLink to="/posts">Login</CustomLink>
-          <CustomLink to="/about">Register</CustomLink>
+          <div className="header_left">
+            <CustomLink to="/">Home</CustomLink>
+            <CustomLink to="/posts">Posts</CustomLink>
+          </div>
+          <div className="header_right">
+            <CustomLink to="/login">Login</CustomLink>
+            <CustomLink to="/register">Register</CustomLink>
+          </div>
         </div>
       </header>
 
       <main className="page">
-        <div className="container">
+        <div className="main_container container">
           <Outlet />
         </div>
       </main>
 
-      <footer className="footer">&copy; JWT Authorization 2023</footer>
+      <footer className="footer">
+        <div className="container">
+          &copy; JWT Authorization 2023
+        </div>
+      </footer>
     </div>
   )
 }

@@ -6,7 +6,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState()
 
   return (
-    <div>
+    <div className="form_container">
       <input
         onChange={e => setEmail(e.target.value)}
         value={email}

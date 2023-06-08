@@ -8,45 +8,47 @@ import Layout from "./components/Layout"
 import RegisterPage from "./components/RegisterPage";
 import Posts from "./components/Posts";
 import NotfoundPage from "./components/NotfoundPage";
+import HomePage from "./components/HomePage";
 
 function App(){
-  const [posts, setPosts] = useState([])
-
-  useEffect(() => {
-    if(sessionStorage.getItem('token')){
-      store.refresh()
-    }
-  }, [])
-
-  async function getPosts() {
-    try {
-      const response = await PostService.fetchPosts()
-      setPosts(response.data.data)
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  if(store.isLoading){
-    return(
-      <div>Loading...</div>
-    )
-  }
-
-  if(!store.isAuth){
-    return(
-      <div>
-        <LoginPage />
-        <div>
-          <button onClick={getPosts}>Получить посты</button>
-        </div>
-      </div>
-    )
-  }
+  // const [posts, setPosts] = useState([])
+  //
+  // useEffect(() => {
+  //   if(sessionStorage.getItem('token')){
+  //     store.refresh()
+  //   }
+  // }, [])
+  //
+  // async function getPosts() {
+  //   try {
+  //     const response = await PostService.fetchPosts()
+  //     setPosts(response.data.data)
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
+  //
+  // if(store.isLoading){
+  //   return(
+  //     <div>Loading...</div>
+  //   )
+  // }
+  //
+  // if(!store.isAuth){
+  //   return(
+  //     <div>
+  //       <LoginPage />
+  //       <div>
+  //         <button onClick={getPosts}>Получить посты</button>
+  //       </div>
+  //     </div>
+  //   )
+  // }
 
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="posts" element={<Posts />} />
