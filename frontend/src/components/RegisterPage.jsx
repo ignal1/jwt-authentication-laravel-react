@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import store from '../store'
 
-const RegisterForm = () => {
+const RegisterPage = () => {
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
@@ -28,4 +28,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default RegisterPage;

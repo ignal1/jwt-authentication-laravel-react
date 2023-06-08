@@ -1,0 +1,68 @@
+/* Normalizing */
+*,
+::before,
+::after{
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
+ul,
+ol,
+li{
+  list-style: none;
+}
+img{
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  font-weight: inherit;
+  font-size: inherit;
+}
+html,
+body,
+.app,
+#root{
+  height: 100%;
+  line-height: 1;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  background: #fff;
+  font-family: Montserrat, sans-serif;
+}
+/* End normalizing */
+.wrapper{
+  display: flex;
+  flex-direction: column;     /* Внутри блоки выстраиваются в столбец */
+  min-height: 100%;
+  overflow: hidden;           /* Это чтобы не было нижнего скрола */
+}
+.page {
+  flex: 1 1 auto;             /* Внутри .wrapper этот блок будет вытягиваться и прибивать footer к подвалу. Вытягивание будет за счет добавления пустого места внизу данного блока */
+}
+.container {
+  max-width: 900px;
+  padding: 0 15px;
+  margin: 0 auto;
+  box-sizing: content-box;
+}
+.header {
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  background-color: gray;
+}
+.header_container {            /* Добавлено чтобы выровнять бургер по вертикали внутри navbar. */
+  display: flex;               /* Нельзя было делать .header display:flex, так как бургер выравнивался по центру. */
+  align-items: center;
+  min-height: 50px;            /* min-height такой же, как у .header. Без этого высота .header_container по содержимому и центрирования не будет. */
+}

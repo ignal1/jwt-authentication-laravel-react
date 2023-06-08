@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import store from '../store'
 
-const LoginForm = () => {
+const LoginPage = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
@@ -22,4 +22,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm
+export default LoginPage
